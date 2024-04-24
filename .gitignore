@@ -1,9 +1,9 @@
 # This is a gitignore file. Folders and file types in here will not
 # be added to version control and will not be uploaded to Github.
 # For example we ignore the hidden files from Pycharm and VS Code.
-.idea/
+.idea
 .vscode
-.venv
+
 
 ### Also any macOS specific files
 .DS_Store
@@ -16,7 +16,7 @@ Icon
 # People have already very handy .gitignore templates for Python projects.
 # Below is this one here: https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__
 *.py[cod]
 *$py.class
 
