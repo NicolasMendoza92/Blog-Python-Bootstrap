@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, redirect, url_for, flash, abort, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
@@ -12,11 +14,9 @@ from datetime import date
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, ContactForm
 from smtplib import SMTP
 
-# ENVIRONMENT FOR SMTP
-PASS_MAIL = "dcggputabbmyjjyl"
-
+load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.getenv("FLASK_KEY")
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -324,7 +324,7 @@ def send_email(name, email, message):
     email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nMessage:{message}"
     with SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
-        connection.login(user="nmapi2022@gmail.com", password=PASS_MAIL)
+        connection.login(user="nmapi2022@gmail.com", password=os.getenv("PASS_MAIL"))
         connection.sendmail(from_addr="nmapi2022@gmail.com",
                             to_addrs=email,
                             msg=email_message)
