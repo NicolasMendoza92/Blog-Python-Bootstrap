@@ -330,5 +330,16 @@ def send_email(name, email, message):
                             msg=email_message)
 
 
+@app.route('/back')
+def go_back():
+    # Obtiene la URL de la página anterior
+    previous_page = request.referrer
+    if not previous_page:
+        # Si no hay página anterior, redirige al inicio
+        return redirect(url_for('index'))
+    # Redirige al usuario de regreso a la página anterior
+    return redirect(previous_page)
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5003)

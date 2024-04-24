@@ -218,8 +218,11 @@ header.masthead .post-heading .meta a {
   text-align: center;
 }
 
+/* POSTs Styling */
+
 .post-preview > a {
   color: #212529;
+  text-decoration:none;
 }
 .post-preview > a:focus, .post-preview > a:hover {
   text-decoration: none;
@@ -229,10 +232,12 @@ header.masthead .post-heading .meta a {
   font-size: 1.875rem;
   margin-top: 1.875rem;
   margin-bottom: 0.625rem;
+  text-decoration:none;
 }
 .post-preview > a > .post-subtitle {
   font-weight: 300;
   margin-bottom: 0.625rem;
+  text-decoration:none;
 }
 .post-preview > .post-meta {
   font-size: 1.125rem;

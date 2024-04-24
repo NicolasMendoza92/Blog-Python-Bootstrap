@@ -31,9 +31,11 @@
           Posted by
           <a href="{{ url_for('see_user', user_id=post.author.id) }}">{{post.author.name}}</a>
           on {{post.date}}
-          {% if current_user.id == 1: %}
-          <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
-          {% endif %}
+           {% if current_user.is_authenticated %}
+           {% if current_user.id == post.author.id %}
+            <a href="{{url_for('delete_post', post_id=post.id) }}">✘</a>
+            {% endif %}
+           {% endif %}
         </p>
       </div>
       <!-- Divider-->
