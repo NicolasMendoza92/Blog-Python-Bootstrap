@@ -1,0 +1,48 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../static/assets/img/login-bg.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>Welcome {{ user.name }} </h1>
+          <h2 class="subheading">Take a look at your profile</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Profile Content -->
+  <div class="container m-auto">
+        <div class="d-flex justify-content-between">
+               <img src="{{ gravatar(user.email) }}" alt="Profile Picture">
+        </div>
+      <div class="row m-2">
+              <h4>Biography</h4>
+              <form class="d-flex gap-1 " action="{{ url_for('edit_bio') }}" method="POST">
+                <textarea name="biography" rows="4" cols="50">{{ user.biography }}</textarea>
+                <button class="btn btn-outline-secondary" type="submit">Save</button>
+            </form>
+          </div>
+        <div class="gx-4 gx-lg-5 justify-content-center">
+            <div class="">
+                <h2>My Posts:</h2>
+                {% if user.posts %}
+                <ul>
+                    {% for post in user.posts %}
+                        <li>{{ post.title }} - {{ post.subtitle }}
+                        <a style="font-weight: bold" href="{{url_for('show_post', post_id=post.id)}}">Read</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No posts yet</p>
+                {% endif %}
+            </div>
+        </div>
+  </div>
+
+
+{% include "footer.html" %}
